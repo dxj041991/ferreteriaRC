@@ -204,3 +204,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GROUPS = {
     'customer': 2
 }
+
+UTF8_ENCODING = 'latin-1'

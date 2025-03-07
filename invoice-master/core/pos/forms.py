@@ -66,7 +66,7 @@ class PurchaseForm(BaseModelForm):
         super().__init__(*args, **kwargs)
         update_form_fields_attributes(self, exclude_fields=['search'])
         self.fields['provider'].queryset = Provider.objects.none()
-        for field_name in ['subtotal', 'tax', 'total_tax', 'total_amount']:
+        for field_name in ['subtotal_with_tax', 'subtotal_without_tax', 'tax', 'total_tax', 'total_amount']:
             self.fields[field_name].disabled = True
 
     class Meta:

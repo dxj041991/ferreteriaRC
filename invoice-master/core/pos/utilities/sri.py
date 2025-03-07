@@ -88,18 +88,18 @@ class SRI:
                 commands = ['java', '-jar', jar_path, certificate_path, certificate_key, file_temp.name, self.base_dir, xml_name]
                 procedure = subprocess.run(args=commands, capture_output=True)
                 if procedure.returncode == 0:
-                    error = procedure.stdout.decode('utf-8')
+                    error = procedure.stdout.decode(settings.UTF8_ENCODING)
                     if error.__contains__('Error'):
                         response['error'] = error
                     else:
                         generated_xml_path = os.path.join(self.base_dir, xml_name)
                         with open(generated_xml_path, 'rb') as file:
                             response['resp'] = True
-                            response['xml'] = file.read().decode('utf-8')
+                            response['xml'] = file.read().decode(settings.UTF8_ENCODING)
                         if os.path.exists(generated_xml_path):
                             os.remove(generated_xml_path)
                 else:
-                    response['error'] = procedure.stderr.decode('utf-8')
+                    response['error'] = procedure.stderr.decode(settings.UTF8_ENCODING)
         except Exception as e:
             response['error'] = str(e)
         finally:
@@ -112,8 +112,8 @@ class SRI:
     def validate_xml(self, instance, xml):
         response = {'resp': False, 'stage': VOUCHER_STAGE[2][0]}
         try:
-            document = xml.strip().encode('utf-8')
-            base64_binary_xml = base64.b64encode(document).decode('utf-8')
+            document = xml.strip().encode(settings.UTF8_ENCODING)
+            base64_binary_xml = base64.b64encode(document).decode(settings.UTF8_ENCODING)
             sri_client = Client(self.get_receipt_url(instance))
             result = sri_client.service.validarComprobante(base64_binary_xml)
             status = result.estado

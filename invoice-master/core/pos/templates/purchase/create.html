@@ -99,37 +99,45 @@
         </div>
     </div>
     <div class="row d-flex flex-row-reverse">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="container">
                 <div class="row mb-2">
-                    <div class="col-lg-4 d-flex align-items-center">
-                        <span class="font-weight-bold">{{ form.subtotal.label|upper }}:</span>
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <span class="font-weight-bold">{{ form.subtotal_without_tax.label|upper }}:</span>
                     </div>
-                    <div class="col-lg-8 d-flex align-items-center justify-content-start">
-                        {{ form.subtotal }}
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start">
+                        {{ form.subtotal_without_tax }}
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-lg-4 d-flex align-items-center">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <span class="font-weight-bold">{{ form.subtotal_with_tax.label|upper }}:</span>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start">
+                        {{ form.subtotal_with_tax }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-6 d-flex align-items-center">
                         <span class="font-weight-bold">{{ form.tax.label|upper }}:</span>
                     </div>
-                    <div class="col-lg-8 d-flex align-items-center justify-content-start">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start">
                         {{ form.tax }}
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-lg-4 d-flex align-items-center">
+                    <div class="col-lg-6 d-flex align-items-center">
                         <span class="font-weight-bold">{{ form.total_tax.label|upper }}:</span>
                     </div>
-                    <div class="col-lg-8 d-flex align-items-center justify-content-start">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start">
                         {{ form.total_tax }}
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-lg-4 d-flex align-items-center">
+                    <div class="col-lg-6 d-flex align-items-center">
                         <span class="font-weight-bold">{{ form.total_amount.label|upper }}:</span>
                     </div>
-                    <div class="col-lg-8 d-flex align-items-center justify-content-start">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start">
                         {{ form.total_amount }}
                     </div>
                 </div>

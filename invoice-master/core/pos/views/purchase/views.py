@@ -75,7 +75,7 @@ class PurchaseCreateView(GroupPermissionMixin, CreateView):
                             purchase_id=purchase.id,
                             product_id=product.id,
                             quantity=int(i['quantity']),
-                            price=float(i['price'])
+                            price=float(i['current_price'])
                         )
                         detail.product.stock += detail.quantity
                         detail.product.save()
@@ -97,7 +97,11 @@ class PurchaseCreateView(GroupPermissionMixin, CreateView):
                 if filters.children and len(term):
                     queryset = queryset[0:10]
                 for i in queryset:
-                    data.append(i.as_dict())
+                    item = i.as_dict()
+                    item['current_price'] = float(i.price)
+                    item['discount'] = 0.00
+                    item['total_discount'] = 0.00
+                    data.append(item)
             elif action == 'search_provider':
                 data = []
                 for i in Provider.objects.filter(name__icontains=request.POST['term']).order_by('name')[0:10]:
